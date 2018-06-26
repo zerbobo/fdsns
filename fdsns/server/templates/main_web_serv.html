@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    {% for lists in table %}
+
+    <h2>{{ lists.name }}</h2>
+
+    <ul id="{{ lists.name }}">
+    {% for item in lists.list %}
+        <li><a href="{{ item.url }}" target="_blank">{{ item.name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    {% endfor %}
+
+</body>
+</html>

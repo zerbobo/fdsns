@@ -1,0 +1,17 @@
+title = "Demo"
+port = 5699
+
+[[table]]
+    name = "Demo table1"
+    [[table.list]]
+        name = "Google"
+        url = "http://www.google.com"
+    [[table.list]]
+        name = "Baidu"
+        url = "http://www.baidu.com"
+
+[[table]]
+    name = "Demo table2"
+    [[table.list]]
+        name = "GitHub"
+        url = "http://www.github.com"
