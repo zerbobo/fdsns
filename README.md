@@ -2,7 +2,7 @@
 
 A fast deploying and simple navigation site.
 
-It's useful when there are various websites to manage and navigate inside of a corparation. This gives you a chance to navigate to all.
+It's useful when there are various websites to manage and navigate inside of an organization. This gives you a chance to navigate to all.
 
 All you need to do is just writing a toml config file.
 
@@ -20,7 +20,7 @@ Then in project root directory:
 
 ```
 source build/py_env/bin/activate
-python -m fdsns.server.web_site.py
+python -m fdsns.server.web_site
 ```
 
 To run a default site, default port is 5699. Visit http://localhost:5699
@@ -38,7 +38,7 @@ sudo systemctl start fdsns.service
 
 # Configuration
 
-Default configuration file is located at /opt/fdsns/fdsns.toml , and default content is:
+The default configuration file is located at `/opt/fdsns/fdsns.toml` , and default content is:
 
 ```
 title = "Demo"
@@ -62,4 +62,4 @@ port = 5699
 
 The key words are `title`, `port`, `table`, `list`, `name` and `url`.
 
-Format is toml, and format error will result in the site running with a default config.
+It is of toml format, and format error will result in the site running with a default config.
