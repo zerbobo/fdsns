@@ -58,8 +58,13 @@ port = 5699
     [[table.list]]
         name = "GitHub"
         url = "http://www.github.com"
+    [[table.list]]
+        name = "TestSameServerDifferentPort"
+        url = "$localhost:12345"        
 ```
 
 The key words are `title`, `port`, `table`, `list`, `name` and `url`.
 
 It is of toml format, and format error will result in the site running with a default config.
+
+**Note** $localhost is a special representation which is used for navigating to another server with a same server ip address and a different port.

@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 from flask import request
-from flask import json
-from flask import send_file
 from flask import render_template
 from flask_cors import CORS
 import threading
 import logging
 import logging.config
-import StringIO
 import os
 import sys
 import traceback
@@ -48,6 +45,9 @@ port = 5699
     [[table.list]]
         name = "GitHub"
         url = "http://www.github.com"
+[[table.list]]
+        name = "TestSameServerDifferentPort"
+        url = "$localhost:12345"
 '''
 g_toml_config = None
 
@@ -85,9 +85,16 @@ def hello_world(name=None):
 def main_web_serv():
     global g_toml_config
     if g_toml_config:
+        url_parts = request.url_root.split(':')
+        if len(url_parts) >= 2:
+            local_url = url_parts[0] + ":" + url_parts[1].rstrip('/')
+        else:
+            local_url = ""
+
         return render_template('main_web_serv.html',
                                title=g_toml_config.get("title", "Empty title"),
-                               table=g_toml_config.get("table", {}))
+                               table=g_toml_config.get("table", {}),
+                               localhost_url=local_url)
     else:
         return 400
 

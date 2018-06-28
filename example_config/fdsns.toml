@@ -15,3 +15,6 @@ port = 5699
     [[table.list]]
         name = "GitHub"
         url = "http://www.github.com"
+    [[table.list]]
+        name = "TestSameServerDifferentPort"
+        url = "$localhost:12345"
