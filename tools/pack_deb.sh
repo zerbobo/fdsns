@@ -25,8 +25,18 @@ if [ "${tgt_install_prefix}" == "" ]; then
 fi
 echo "deb install prefix is ${tgt_install_prefix}"
 
+uname_arch=$(uname -m)
+if [ x"${uname_arch}" == x"x86_64" ]; then
+    arch=amd64
+elif [ x"${uname_arch}" == x"aarch64" ]; then
+    arch=arm64
+else
+    echo "not support arch ${uname_arch}" >&2
+    exit 2
+fi
+
 ### 2. check env and tools
-pip -V > /dev/null 2>&1 || sudo apt install python-pip -y || exit 2
+pip -V > /dev/null 2>&1 || { sudo apt install -y python-pip && sudo pip install --upgrade pip; } || exit 2
 virtualenv --version > /dev/null 2>&1 || sudo pip install virtualenv || exit 3
 
 source ${v_env}/bin/activate || exit 5
@@ -67,7 +77,7 @@ Section: x11
 Priority: optional
 Depends:
 Suggests:
-Architecture: amd64
+Architecture: ${arch}
 Maintainer: zerbobo
 CopyRight: MIT
 Provider: zerbobo
@@ -131,7 +141,7 @@ chmod +x postinst postrm preinst prerm
 
 ### 6. start to make .deb package
 cd ${route}/../dist/
-fakeroot dpkg -b ${working_dir} fdsns_${tgt_version}_amd64.deb || exit 7
+fakeroot dpkg -b ${working_dir} fdsns_${tgt_version}_${arch}.deb || exit 7
 rm -fr ${working_dir}
 
 echo "pack fdsns into deb finished."
