@@ -18,7 +18,7 @@ setup(
         'Private :: Do Not Upload',
     ],
     install_requires=[
-        'Flask==0.12.2',
+        'Flask==1.0',
         'Flask-Cors==3.0.3',
         'Toml==0.9.4'
     ],
