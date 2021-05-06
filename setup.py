@@ -19,7 +19,7 @@ setup(
     ],
     install_requires=[
         'Flask==1.0',
-        'Flask-Cors==3.0.3',
+        'Flask-Cors==3.0.9',
         'Toml==0.9.4'
     ],
     package_dir={'fdsns': src_dir + "/fdsns"},
